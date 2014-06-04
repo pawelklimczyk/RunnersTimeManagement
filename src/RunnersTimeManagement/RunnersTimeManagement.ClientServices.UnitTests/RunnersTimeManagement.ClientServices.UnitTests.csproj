@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -42,12 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsonHelpersTests.cs" />
+    <Compile Include="LoginServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RunnersTimeManagement.ClientServices\RunnersTimeManagement.ClientServices.csproj">
-      <Project>{03c67c4b-ea4e-480f-bfb2-b680c69818cb}</Project>
+      <Project>{49926183-751e-4546-b871-0c843d87b542}</Project>
       <Name>RunnersTimeManagement.ClientServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RunnersTimeManagement.Core\RunnersTimeManagement.Core.csproj">
+      <Project>{C38E61DF-DB78-44E0-8BEE-7C8A65686947}</Project>
+      <Name>RunnersTimeManagement.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

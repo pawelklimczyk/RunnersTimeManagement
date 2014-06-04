@@ -10,8 +10,18 @@ using RunnersTimeManagement.WP8.Resources;
 
 namespace RunnersTimeManagement.WP8
 {
+    using RunnersTimeManagement.ClientServices;
+
     public partial class App : Application
     {
+        private static LoginService loginService;
+        public static LoginService LoginService
+        {
+            get
+            {
+                return loginService ?? (loginService = new LoginService());
+            }
+        }
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -38,29 +48,22 @@ namespace RunnersTimeManagement.WP8
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)
             {
-                // Display the current frame rate counters.
                 Application.Current.Host.Settings.EnableFrameRateCounter = true;
 
-                // Show the areas of the app that are being redrawn in each frame.
-                //Application.Current.Host.Settings.EnableRedrawRegions = true;
-
-                // Enable non-production analysis visualization mode,
-                // which shows areas of a page that are handed off to GPU with a colored overlay.
-                //Application.Current.Host.Settings.EnableCacheVisualization = true;
-
-                // Prevent the screen from turning off while under the debugger by disabling
-                // the application's idle detection.
-                // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
-                // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-
         }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            if (LoginService.TryRunWithCachecCredentials())
+            {
+                App.RootFrame.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            }
+
+            //else start with LoginPage.xaml (default)
         }
 
         // Code to execute when the application is activated (brought to foreground)

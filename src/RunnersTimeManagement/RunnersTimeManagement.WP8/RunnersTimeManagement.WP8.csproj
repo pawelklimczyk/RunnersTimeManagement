@@ -94,6 +94,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,7 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RunnersTimeManagement.ClientServices\RunnersTimeManagement.ClientServices.csproj">
-      <Project>{03C67C4B-EA4E-480F-BFB2-B680C69818CB}</Project>
+      <Project>{49926183-751E-4546-B871-0C843D87B542}</Project>
       <Name>RunnersTimeManagement.ClientServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\RunnersTimeManagement.Core\RunnersTimeManagement.Core.csproj">
