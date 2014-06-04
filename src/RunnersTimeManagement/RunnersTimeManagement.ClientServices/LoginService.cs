@@ -67,8 +67,5 @@ namespace RunnersTimeManagement.ClientServices
                 return false;
             }
         }
-
-
-
     }
 }

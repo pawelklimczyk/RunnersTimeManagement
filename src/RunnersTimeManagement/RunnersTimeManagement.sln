@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnersTimeManagement.WP8",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnersTimeManagement.Core", "RunnersTimeManagement.Core\RunnersTimeManagement.Core.csproj", "{C38E61DF-DB78-44E0-8BEE-7C8A65686947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnersTimeManagement.Server", "RunnersTimeManagement.Server\RunnersTimeManagement.Server.csproj", "{3164C9C1-D951-4BCD-87BE-6C316B4152F3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnersTimeManagement.Core.UnitTests", "RunnersTimeManagement.Core.UnitTests\RunnersTimeManagement.Core.UnitTests.csproj", "{B06CCE33-6EDA-46E6-A92E-798D4F116326}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnersTimeManagement.ClientServices.UnitTests", "RunnersTimeManagement.ClientServices.UnitTests\RunnersTimeManagement.ClientServices.UnitTests.csproj", "{ED5000E4-B148-458C-99E1-5E9513FF2140}"
@@ -22,6 +20,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{500D806D-A64F-434F-B43C-46F4572BB534}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnersTimeManagement.ClientServices", "RunnersTimeManagement.ClientServices\RunnersTimeManagement.ClientServices.csproj", "{49926183-751E-4546-B871-0C843D87B542}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunnersTimeManagement.WebServer", "RunnersTimeManagement.WebServer\RunnersTimeManagement.WebServer.csproj", "{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,14 +59,6 @@ Global
 		{C38E61DF-DB78-44E0-8BEE-7C8A65686947}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C38E61DF-DB78-44E0-8BEE-7C8A65686947}.Release|ARM.ActiveCfg = Release|Any CPU
 		{C38E61DF-DB78-44E0-8BEE-7C8A65686947}.Release|x86.ActiveCfg = Release|Any CPU
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3}.Release|ARM.ActiveCfg = Release|Any CPU
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3}.Release|x86.ActiveCfg = Release|Any CPU
 		{B06CCE33-6EDA-46E6-A92E-798D4F116326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B06CCE33-6EDA-46E6-A92E-798D4F116326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B06CCE33-6EDA-46E6-A92E-798D4F116326}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -111,6 +103,14 @@ Global
 		{49926183-751E-4546-B871-0C843D87B542}.Release|ARM.Build.0 = Release|ARM
 		{49926183-751E-4546-B871-0C843D87B542}.Release|x86.ActiveCfg = Release|x86
 		{49926183-751E-4546-B871-0C843D87B542}.Release|x86.Build.0 = Release|x86
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +123,6 @@ Global
 		{C38E61DF-DB78-44E0-8BEE-7C8A65686947} = {7A9BC445-814A-48BE-A536-52A8EED10293}
 		{2F4E46EF-E733-4A60-8129-42CE80060CCA} = {500D806D-A64F-434F-B43C-46F4572BB534}
 		{F07BD3CB-E133-4243-B93A-A40B5734E799} = {500D806D-A64F-434F-B43C-46F4572BB534}
-		{3164C9C1-D951-4BCD-87BE-6C316B4152F3} = {500D806D-A64F-434F-B43C-46F4572BB534}
+		{7E4A866D-1C18-45CF-A445-15BC5E57BD1E} = {500D806D-A64F-434F-B43C-46F4572BB534}
 	EndGlobalSection
 EndGlobal
