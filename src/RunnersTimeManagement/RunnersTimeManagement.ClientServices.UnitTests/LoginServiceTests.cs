@@ -66,8 +66,9 @@ namespace RunnersTimeManagement.ClientServices.UnitTests
         {
             string username = "pawel";
             string password = "001010";
+            string accessToken = "FE54632";
             long id = 1;
-            return string.Format("{{\"id\":\"{0}\",\"username\":\"{1}\",\"password\":\"{2}\"}}", id, username, password);
+            return string.Format("{{\"id\":\"{0}\",\"username\":\"{1}\",\"password\":\"{2}\", \"accessToken\":\"{3}\"}}", id, username, password, accessToken);
         }
     }
 }

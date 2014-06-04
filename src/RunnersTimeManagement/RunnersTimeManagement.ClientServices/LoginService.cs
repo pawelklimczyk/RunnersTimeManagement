@@ -25,6 +25,7 @@ namespace RunnersTimeManagement.ClientServices
         {
             //TODO
             //connect to server via REST
+            //read token and save locally
             return true;
         }
 
@@ -32,7 +33,7 @@ namespace RunnersTimeManagement.ClientServices
         {
             User cachedUser = this.GetUserFromCache();
 
-            return cachedUser != null && !string.IsNullOrEmpty(cachedUser.Password) && !string.IsNullOrEmpty(cachedUser.UserName);
+            return cachedUser != null && !string.IsNullOrEmpty(cachedUser.Password) && !string.IsNullOrEmpty(cachedUser.UserName) && !string.IsNullOrEmpty(cachedUser.AccessToken);
         }
 
         private User GetUserFromCache()
@@ -66,5 +67,8 @@ namespace RunnersTimeManagement.ClientServices
                 return false;
             }
         }
+
+
+
     }
 }

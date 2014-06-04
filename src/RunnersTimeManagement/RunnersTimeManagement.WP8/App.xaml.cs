@@ -19,7 +19,7 @@ namespace RunnersTimeManagement.WP8
         {
             get
             {
-                return loginService ?? (loginService = new LoginService());
+                return loginService ?? (loginService = new LoginService(new FileService()));
             }
         }
         /// <summary>
