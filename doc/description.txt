@@ -1,0 +1,11 @@
+Write a time management Windows Mobile application where:
+- User must be able to create an account and log in
+- When logged in, user can see his times he entered
+- Each time entry when entered has a date, distance, and time
+- When displayed, each time entry has an average speed
+- Filter by dates from-to
+- Report on average speed & distance per week
+- REST API – for all entities
+- real life gps data is a plus (optional part)
+- graphs of your choice (optional part)
+
