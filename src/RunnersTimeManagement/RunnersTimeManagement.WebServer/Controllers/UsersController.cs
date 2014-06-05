@@ -13,18 +13,21 @@ namespace RunnersTimeManagement.WebServer.Controllers
 
     public class UsersController : ApiController
     {
+
+
         [HttpPost]
+        [HttpGet]
         [ActionName("login")]
-        public HttpResponseMessage PostLogin(User model)
+        public OperationStatus PostLogin(User model)
         {
-            return new HttpResponseMessage();
+            return OperationStatus.Failed("Wrong Username or password");
         }
 
         [HttpPost]
         [ActionName("createAccount")]
-        public HttpResponseMessage PostCreateAccount(User model)
+        public OperationStatus PostCreateAccount(User model)
         {
-            return new HttpResponseMessage();
+            return new OperationStatus();
         }
     }
 }

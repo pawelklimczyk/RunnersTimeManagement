@@ -1,0 +1,9 @@
+﻿DROP TABLE IF EXISTS user;
+
+CREATE TABLE user (
+    id       INTEGER PRIMARY KEY AUTOINCREMENT,
+    username VARCHAR NOT NULL,
+    password VARCHAR NOT NULL,
+	AccessToken VARCHAR
+);
+
