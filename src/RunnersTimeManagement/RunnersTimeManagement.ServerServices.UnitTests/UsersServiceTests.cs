@@ -23,7 +23,6 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
             _usersService = new UsersService(provider);
         }
 
-
         [Test]
         public void UsersService_providingUsernameAndPassword_shouldCreateAccount()
         {

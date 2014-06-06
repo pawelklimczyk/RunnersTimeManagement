@@ -44,4 +44,5 @@ _ReSharper.*
 *.resharper.user
 *.pyc
 /.svn
-
+_NCrunch*
+*.swp

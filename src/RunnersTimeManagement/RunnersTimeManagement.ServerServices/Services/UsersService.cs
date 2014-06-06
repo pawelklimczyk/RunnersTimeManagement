@@ -44,24 +44,46 @@ namespace RunnersTimeManagement.ServerServices.Services
 
     public class DatabaseService
     {
+        private static DatabaseMappings _mapping;
+
+        private static bool _isMappingInitialized = false;
+
         protected IDatabaseProvider _databaseProvider;
 
         protected IDatabase CurrentDatabase
         {
             get
             {
-                return new Database(_databaseProvider.ConnectionString, DatabaseType.SQLite);
+               // return new Database(_databaseProvider.ConnectionString, DatabaseType.SQLite);
+                return DatabaseMappings.DbFactory.GetDatabase();
             }
         }
 
         protected DatabaseService(IDatabaseProvider provider)
         {
             _databaseProvider = provider;
+
+            InitializeMapping();
         }
 
-        public void InitDatabase()
+        private void InitializeMapping()
+        {
+            if (_isMappingInitialized)
+            {
+                return;
+            }
+
+            _isMappingInitialized = true;
+
+            _mapping = new DatabaseMappings(_databaseProvider.ConnectionString);
+            _mapping.Setup();
+
+        }
+
+        public void BuildDatabase()
         {
             _databaseProvider.InitDatabase();
         }
     }
 }
+
