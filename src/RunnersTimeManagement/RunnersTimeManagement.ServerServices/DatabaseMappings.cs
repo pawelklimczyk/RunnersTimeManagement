@@ -40,7 +40,7 @@ namespace RunnersTimeManagement.ServerServices
         {
             this.For<User>().Columns(x =>
                 {
-                    x.Column(y => y.UserName).WithName("username");
+                    x.Column(y => y.Username).WithName("username");
                     x.Column(y => y.Id).WithName("id");
                 });
         }

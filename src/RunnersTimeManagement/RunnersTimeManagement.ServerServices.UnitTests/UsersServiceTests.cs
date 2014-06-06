@@ -11,7 +11,7 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
     using RunnersTimeManagement.ServerServices.Services;
 
     [TestFixture]
-    public class UsersServiceTests
+    public class UsersService_CreatingAccount_Tests
     {
         private UsersService _usersService;
 
@@ -36,6 +36,8 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
             //assert
             Assert.AreEqual(0, result.Status);
             Assert.AreEqual("User was created sucessfully", result.StatusDescription);
+            //fixme: add UserExist method in UsersService
+            Assert.AreEqual(-1, _usersService.CreateUser(username,password).Status);
         }
 
         [Test]
@@ -82,6 +84,60 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
             Assert.AreEqual(-1, result.Status);
             Assert.AreEqual("Please provide username", result.StatusDescription);
         }
+    }
 
+    [TestFixture]
+    [Ignore]
+    public class UsersService_Login_Tests
+    {
+        private UsersService _usersService;
+
+        [SetUp]
+        public void TestSetup()
+        {
+            var provider = new TestsDatabaseProvider();
+            provider.InitDatabase();
+            _usersService = new UsersService(provider);
+        }
+
+        [Test]
+        public void UserServiceLogin_ProvidingValidCredentials_shouldLogin()
+        {
+            //arrange
+            string username = "initialUser";
+            string password = "initialPassword";
+
+            //act
+            var result = _usersService.LoginUser(username, password);
+
+            //assert
+            Assert.AreEqual(0, result.Status);
+            Assert.AreEqual("User logged in", result.StatusDescription);
+        }
+
+        [Test]
+        public void UserServiceLogin_ProvidingValidCredentials_shouldReturnAccessToken()
+        {
+            //arrange
+            string username = "initialUser";
+            string password = "initialPassword";
+
+            //act
+            var result = _usersService.LoginUser(username, password);
+
+            //assert
+            Assert.IsNotNull(result.Data);
+        }
+
+        [Test]
+        public void UserServiceLogin_ProvidingInvalidCredentials_shouldNOTLogin([Values("nonExistingUser", "", "userWithNoPassowrd")]string username, [Values("notExistingPassword","passwordWithNoUser", "")]string password)
+        {
+            //act
+            var result = _usersService.LoginUser(username, password);
+
+            //assert
+            Assert.AreEqual(-1, result.Status);
+            Assert.AreEqual("Provide valid username and password", result.StatusDescription);
+        }
     }
 }

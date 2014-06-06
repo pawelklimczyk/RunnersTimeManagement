@@ -9,17 +9,18 @@ namespace RunnersTimeManagement.ServerServices.Services
     using NPoco;
 
     using RunnersTimeManagement.Core.Domain;
+    using RunnersTimeManagement.ServerServices.AccessTokenProvider;
 
-    public class UsersService : DatabaseService
+    public class UsersService : AbstractDatabaseService
     {
         public UsersService(IDatabaseProvider provider)
             : base(provider)
         {
         }
 
-        public OperationStatus CreateUser(string userName, string password)
+        public OperationStatus CreateUser(string username, string password)
         {
-            if (string.IsNullOrWhiteSpace(userName))
+            if (string.IsNullOrWhiteSpace(username))
             {
                 return OperationStatus.Failed("Please provide username");
             }
@@ -29,61 +30,46 @@ namespace RunnersTimeManagement.ServerServices.Services
                 return OperationStatus.Failed("Please provide password");
             }
 
-            using (IDatabase db = CurrentDatabase)
+            using (IDatabase db = this.CurrentDatabase)
             {
-                var existingUser = db.SingleOrDefault<User>("where username=@0", userName);
+                var existingUser = db.SingleOrDefault<User>("where username=@0", username);
                 if (existingUser != null)
                 {
                     return OperationStatus.Failed("User already exists");
                 }
+
+                User newUser = new User() { Username = username, Password = password };
+
+                db.Insert(newUser);
+                return OperationStatus.Passed("User was created sucessfully");
             }
-
-            return OperationStatus.Passed("User was created sucessfully");
         }
-    }
 
-    public class DatabaseService
-    {
-        private static DatabaseMappings _mapping;
-
-        private static bool _isMappingInitialized = false;
-
-        protected IDatabaseProvider _databaseProvider;
-
-        protected IDatabase CurrentDatabase
+        public OperationStatus LoginUser(string username, string password)
         {
-            get
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-               // return new Database(_databaseProvider.ConnectionString, DatabaseType.SQLite);
-                return DatabaseMappings.DbFactory.GetDatabase();
+                return OperationStatus.Failed("Provide valid username and password");
             }
-        }
 
-        protected DatabaseService(IDatabaseProvider provider)
-        {
-            _databaseProvider = provider;
-
-            InitializeMapping();
-        }
-
-        private void InitializeMapping()
-        {
-            if (_isMappingInitialized)
+            using (IDatabase db = this.CurrentDatabase)
             {
-                return;
+                var existingUser = db.SingleOrDefault<User>("where username=@0 and password=@1", username, password);
+                
+                if (existingUser == null)
+                {
+                    return OperationStatus.Failed("Provide valid username and password");
+                }
+
+
+                IAccessTokenProvider tokenProvider = new AccessTokenProvider();
+
+                existingUser.AccessToken = tokenProvider.GenerateToken();
+                
+                db.Update(existingUser);
+
+                return OperationStatus.Passed("User logged in", existingUser.AccessToken);
             }
-
-            _isMappingInitialized = true;
-
-            _mapping = new DatabaseMappings(_databaseProvider.ConnectionString);
-            _mapping.Setup();
-
-        }
-
-        public void BuildDatabase()
-        {
-            _databaseProvider.InitDatabase();
         }
     }
 }
-

@@ -29,7 +29,7 @@ namespace RunnersTimeManagement.ClientServices.UnitTests
 
             //assert
             Assert.AreEqual(id, user.Id);
-            Assert.AreEqual(username, user.UserName);
+            Assert.AreEqual(username, user.Username);
             Assert.AreEqual(password, user.Password);
         }
 
@@ -47,14 +47,14 @@ namespace RunnersTimeManagement.ClientServices.UnitTests
         public void UserObject_PassingObject_ReturnsJsonUserString()
         {
             //arrange
-            User user = new User() { Id = 100, UserName = "Pawel", Password = "9999" };
+            User user = new User() { Id = 100, Username = "Pawel", Password = "9999" };
 
             //act
             string json = JsonHelpers.ConvertToJson(user);
             
             //assert
             StringAssert.Contains(user.Id.ToString(CultureInfo.InvariantCulture), json);
-            StringAssert.Contains(user.UserName, json);
+            StringAssert.Contains(user.Username, json);
             StringAssert.Contains(user.Password, json);
         }
     }

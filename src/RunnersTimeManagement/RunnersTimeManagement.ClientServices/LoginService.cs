@@ -33,7 +33,7 @@ namespace RunnersTimeManagement.ClientServices
         {
             User cachedUser = this.GetUserFromCache();
 
-            return cachedUser != null && !string.IsNullOrEmpty(cachedUser.Password) && !string.IsNullOrEmpty(cachedUser.UserName) && !string.IsNullOrEmpty(cachedUser.AccessToken);
+            return cachedUser != null && !string.IsNullOrEmpty(cachedUser.Password) && !string.IsNullOrEmpty(cachedUser.Username) && !string.IsNullOrEmpty(cachedUser.AccessToken);
         }
 
         private User GetUserFromCache()

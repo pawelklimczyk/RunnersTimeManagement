@@ -23,12 +23,13 @@ namespace RunnersTimeManagement.Core.Domain
                        };
         }
 
-        public static OperationStatus Passed(string message)
+        public static OperationStatus Passed(string message, object data = null)
         {
             return new OperationStatus()
             {
                 Status = StatusCode.Successful,
-                StatusDescription = message
+                StatusDescription = message,
+                Data = data
             };
         }
 
@@ -38,6 +39,6 @@ namespace RunnersTimeManagement.Core.Domain
             public const int Successful = 0;
         }
 
-      
+
     }
 }
