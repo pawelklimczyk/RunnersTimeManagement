@@ -13,6 +13,8 @@ namespace RunnersTimeManagement.ClientServices.UnitTests
     [TestFixture]
     public class LoginServiceTests
     {
+        private string baseUrl = "http://localhost";
+
         private LoginService _loginService;
 
         [SetUp]
@@ -32,7 +34,7 @@ namespace RunnersTimeManagement.ClientServices.UnitTests
                     x[1] = validUserJson();
                     return true;
                 });
-            _loginService = new LoginService(fileServiceStub);
+            _loginService = new LoginService(fileServiceStub, baseUrl);
 
             //act
             bool result = _loginService.TryRunWithCachecCredentials();
@@ -53,7 +55,7 @@ namespace RunnersTimeManagement.ClientServices.UnitTests
                     return true;
                 });
 
-            _loginService = new LoginService(fileServiceStub);
+            _loginService = new LoginService(fileServiceStub, baseUrl);
 
             //act
             bool result = _loginService.TryRunWithCachecCredentials();

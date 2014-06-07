@@ -16,7 +16,8 @@ namespace RunnersTimeManagement.ClientServices
 
         private readonly IFileService _fileService;
 
-        public LoginService(IFileService fileService)
+        public LoginService(IFileService fileService, string baseUrl)
+            : base(baseUrl)
         {
             _fileService = fileService;
         }

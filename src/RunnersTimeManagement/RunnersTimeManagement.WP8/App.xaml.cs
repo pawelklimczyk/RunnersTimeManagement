@@ -19,7 +19,7 @@ namespace RunnersTimeManagement.WP8
         {
             get
             {
-                return loginService ?? (loginService = new LoginService(new FileService()));
+                return loginService ?? (loginService = new LoginService(new FileService(), AppConfiguration.BaseUrl));
             }
         }
         public static PhoneApplicationFrame RootFrame { get; private set; }
