@@ -71,7 +71,7 @@ namespace RunnersTimeManagement.WP8
 
         private void addTimeEntryButton_Click(object sender, EventArgs e)
         {
-            PageRouter.Navigate(Page.AddNewEntry);
+            PageRouter.Navigate(Page.AddEntry);
         }
     }
 }

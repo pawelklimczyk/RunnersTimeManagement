@@ -29,11 +29,14 @@ namespace RunnersTimeManagement.WP8
                     case Page.EntriesList:
                         App.RootFrame.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
                         break;
-                    case Page.AddNewEntry:
+                    case Page.AddEntry:
+                        App.RootFrame.Navigate(new Uri("/AddEntryPage.xaml", UriKind.Relative));
                         break;
                     case Page.Reports:
+                        App.RootFrame.Navigate(new Uri("/ReportsPage.xaml", UriKind.Relative));
                         break;
                     case Page.About:
+                        App.RootFrame.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
                         break;
                     default:
                         throw new ArgumentOutOfRangeException("newPage");
@@ -47,7 +50,7 @@ namespace RunnersTimeManagement.WP8
         Login,
         CreateAccount,
         EntriesList,
-        AddNewEntry,
+        AddEntry,
         Reports,
         About
     }

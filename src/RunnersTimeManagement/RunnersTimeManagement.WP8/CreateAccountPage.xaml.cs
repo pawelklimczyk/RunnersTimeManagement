@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+﻿// -------------------------------------------------------------------------------------------------------------------
+// <copyright company="Gemotial" file="CreateAccountPage.xaml.cs" project="RunnersTimeManagement.WP8" date="2014-06-04 11:38">
+// 
+// </copyright>
+// -------------------------------------------------------------------------------------------------------------------
 
 namespace RunnersTimeManagement.WP8
 {
+    using Microsoft.Phone.Controls;
+
     public partial class CreateAccountPage : PhoneApplicationPage
     {
         public CreateAccountPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

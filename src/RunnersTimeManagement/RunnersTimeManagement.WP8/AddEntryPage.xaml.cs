@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------------------------------
-// <copyright company="Gemotial" file="MainPage.xaml.cs" project="RunnersTimeManagement.WP8" date="2014-06-04 07:54">
+// <copyright company="Gemotial" file="AddEntryPage.xaml.cs" project="RunnersTimeManagement.WP8" date="2014-06-07 22:14">
 // 
 // </copyright>
 // -------------------------------------------------------------------------------------------------------------------
@@ -10,11 +10,11 @@ namespace RunnersTimeManagement.WP8
 
     using Microsoft.Phone.Controls;
 
-    public partial class MainPage : PhoneApplicationPage
+    public partial class AddEntryPage : PhoneApplicationPage
     {
         private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
 
-        public MainPage()
+        public AddEntryPage()
         {
             this.InitializeComponent();
 
