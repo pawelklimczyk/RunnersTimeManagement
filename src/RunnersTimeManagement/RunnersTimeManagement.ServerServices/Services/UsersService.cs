@@ -6,6 +6,8 @@
 
 namespace RunnersTimeManagement.ServerServices.Services
 {
+    using System;
+
     using NPoco;
 
     using RunnersTimeManagement.Core.Domain;
@@ -55,21 +57,25 @@ namespace RunnersTimeManagement.ServerServices.Services
             using (IDatabase db = this.CurrentDatabase)
             {
                 var existingUser = db.SingleOrDefault<User>("where username=@0 and password=@1", username, password);
-                
+
                 if (existingUser == null)
                 {
                     return OperationStatus.Failed("Provide valid username and password");
                 }
 
-
                 IAccessTokenProvider tokenProvider = new AccessTokenProvider();
 
                 existingUser.AccessToken = tokenProvider.GenerateToken();
-                
+
                 db.Update(existingUser);
 
                 return OperationStatus.Passed("User logged in", existingUser.AccessToken);
             }
+        }
+
+        public OperationStatus Authorize(string accesToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }
