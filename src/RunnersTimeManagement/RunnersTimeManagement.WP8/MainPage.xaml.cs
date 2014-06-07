@@ -12,7 +12,6 @@ namespace RunnersTimeManagement.WP8
     {
         private AppBarBuilder appBarBuilder;
 
-
         public MainPage()
         {
             this.InitializeComponent();

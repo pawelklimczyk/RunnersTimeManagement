@@ -46,11 +46,11 @@ namespace RunnersTimeManagement.WP8
         {
             if (LoginService.TryRunWithCachecCredentials() || true)
             {
-                App.RootFrame.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                PageRouter.Navigate(Page.EntriesList);
             }
             else
             {
-                App.RootFrame.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));
+                PageRouter.Navigate(Page.Login);
             }
         }
 
