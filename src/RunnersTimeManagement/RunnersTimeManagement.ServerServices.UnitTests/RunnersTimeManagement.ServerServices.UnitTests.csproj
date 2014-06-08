@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessTokenProviderTetsts.cs" />
     <Compile Include="TestsDatabaseProvider.cs" />
     <Compile Include="UsersServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

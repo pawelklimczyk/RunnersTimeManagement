@@ -14,12 +14,13 @@ namespace RunnersTimeManagement.Core.Domain
 
         public object Data { get; set; }
 
-        public static OperationStatus Failed(string message)
+        public static OperationStatus Failed(string message, object data = null)
         {
             return new OperationStatus()
                        {
                            Status = StatusCode.Failed,
-                           StatusDescription = message
+                           StatusDescription = message,
+                           Data = data
                        };
         }
 
@@ -38,7 +39,5 @@ namespace RunnersTimeManagement.Core.Domain
             public const int Failed = -1;
             public const int Successful = 0;
         }
-
-
     }
 }
