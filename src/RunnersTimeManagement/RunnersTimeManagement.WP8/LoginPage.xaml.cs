@@ -8,15 +8,23 @@ namespace RunnersTimeManagement.WP8
 {
     using Microsoft.Phone.Controls;
 
+    using RunnersTimeManagement.Core.Domain;
     using RunnersTimeManagement.WP8.Commands;
 
-    public partial class LoginPage : PhoneApplicationPage
+    public partial class LoginPage : BasePage
     {
+        public User UserWithCredentialsToValidate { get; set; }
+
         public LoginPage()
         {
+            UserWithCredentialsToValidate = new User();
+
+            this.DataContext = UserWithCredentialsToValidate;
             this.InitializeComponent();
 
             this.uxCreateAccountButton.Command = new NavigateToNewAccountCommand();
+            this.uxLoginButton.CommandParameter = UserWithCredentialsToValidate;
+            this.uxLoginButton.Command = new LoginUserCommand();
         }
     }
 }

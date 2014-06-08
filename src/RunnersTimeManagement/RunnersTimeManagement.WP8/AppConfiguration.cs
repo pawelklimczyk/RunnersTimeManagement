@@ -8,6 +8,6 @@ namespace RunnersTimeManagement.WP8
 {
     public class AppConfiguration
     {
-        public static string BaseUrl = "http://localhost:12880/";
+        public static string BaseUrl = "http://192.168.190.102";
     }
 }

@@ -47,12 +47,12 @@ namespace RunnersTimeManagement.WP8
 
     public enum Page
     {
-        Login,
-        CreateAccount,
-        EntriesList,
-        AddEntry,
-        Reports,
-        About
+        Login = 1,
+        CreateAccount = 2,
+        EntriesList = 3,
+        AddEntry = 4,
+        Reports = 5,
+        About = 6
     }
 
 }

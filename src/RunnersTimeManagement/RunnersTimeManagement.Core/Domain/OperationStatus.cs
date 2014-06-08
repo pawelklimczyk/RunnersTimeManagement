@@ -14,6 +14,11 @@ namespace RunnersTimeManagement.Core.Domain
 
         public object Data { get; set; }
 
+        public static explicit operator bool(OperationStatus status)
+        {
+            return status.Status == 0;
+        }
+
         public static OperationStatus Failed(string message)
         {
             return new OperationStatus()

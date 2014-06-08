@@ -7,6 +7,11 @@
 namespace RunnersTimeManagement.ClientServices
 {
     using System;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using RestSharp;
 
     using RunnersTimeManagement.Core.Domain;
 
@@ -22,15 +27,38 @@ namespace RunnersTimeManagement.ClientServices
             _fileService = fileService;
         }
 
-        public bool LoginUser(string username, string password)
+
+        public Task<OperationStatus> LoginUser(string username, string password)
         {
-            //TODO
-            //connect to server via REST
-            //read token and save locally
-            return true;
+            var tcs = new TaskCompletionSource<OperationStatus>();
+
+            var client = new RestClient(BaseUrl);
+            var request = new RestRequest("api/users/login", Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            
+            request.AddBody(new User() { Username = username, Password = password });
+            //request.AddHeader("header", "value");
+
+            client.ExecuteAsync(request, response =>
+            {
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var data = JsonConvert.DeserializeObject<OperationStatus>(response.Content);
+
+                    //TODO check status and if true-> read token and save locally
+                    
+                    tcs.SetResult(data);
+                }
+                else
+                {
+                    tcs.SetResult(OperationStatus.Failed("Error login in!"));
+                }
+            });
+
+            return tcs.Task;
         }
 
-        public bool TryRunWithCachecCredentials()
+        public bool TryRunWithCachedCredentials()
         {
             User cachedUser = this.GetUserFromCache();
 

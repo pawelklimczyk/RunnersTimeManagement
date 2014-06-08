@@ -6,17 +6,13 @@
 
 namespace RunnersTimeManagement.WebServer.Controllers
 {
-    using System.Net.Http;
     using System.Web.Http;
 
     using RunnersTimeManagement.Core.Domain;
 
     public class UsersController : ApiController
     {
-
-
         [HttpPost]
-        [HttpGet]
         [ActionName("login")]
         public OperationStatus PostLogin(User model)
         {

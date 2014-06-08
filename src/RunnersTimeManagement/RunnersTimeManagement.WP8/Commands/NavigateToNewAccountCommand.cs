@@ -18,7 +18,7 @@ namespace RunnersTimeManagement.WP8.Commands
 
         public void Execute(object parameter)
         {
-            App.RootFrame.Navigate(new Uri("/CreateAccountPage.xaml", UriKind.Relative));
+            PageRouter.Navigate(Page.CreateAccount);
         }
 
         public event EventHandler CanExecuteChanged;

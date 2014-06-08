@@ -44,7 +44,7 @@ namespace RunnersTimeManagement.WP8
 
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            if (LoginService.TryRunWithCachecCredentials() || true)
+            if (LoginService.TryRunWithCachedCredentials())
             {
                 PageRouter.Navigate(Page.EntriesList);
             }
