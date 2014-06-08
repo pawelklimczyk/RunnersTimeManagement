@@ -4,16 +4,14 @@
 // </copyright>
 // -------------------------------------------------------------------------------------------------------------------
 
-namespace RunnersTimeManagement.ServerServices
+namespace RunnersTimeManagement.ServerServices.Services
 {
-    using RunnersTimeManagement.ServerServices.Services;
-
     public class TimeService : AbstractDatabaseService
     {
         public TimeService(IDatabaseProvider provider)
             : base(provider)
         {
+
         }
-         
     }
 }

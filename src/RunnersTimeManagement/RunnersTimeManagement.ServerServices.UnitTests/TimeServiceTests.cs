@@ -8,6 +8,8 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
 {
     using NUnit.Framework;
 
+    using RunnersTimeManagement.ServerServices.Services;
+
     [TestFixture]
     [Ignore]
     public class TimeServiceTests
