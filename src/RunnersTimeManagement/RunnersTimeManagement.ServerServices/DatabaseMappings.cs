@@ -42,6 +42,8 @@ namespace RunnersTimeManagement.ServerServices
                 {
                     x.Column(y => y.Username).WithName("username");
                     x.Column(y => y.Id).WithName("id");
+                    x.Column(y => y.Password).WithName("password");
+                    x.Column(y => y.AccessToken).WithName("accesstoken");
                 });
         }
     }

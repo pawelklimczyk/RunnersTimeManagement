@@ -37,7 +37,7 @@ namespace RunnersTimeManagement.ClientServices.UnitTests
             _loginService = new LoginService(fileServiceStub, baseUrl);
 
             //act
-            bool result = _loginService.TryRunWithCachedCredentials();
+            bool result = (bool)_loginService.TryRunWithCachedCredentials();
 
             //assert
             Assert.IsTrue(result);
@@ -58,7 +58,7 @@ namespace RunnersTimeManagement.ClientServices.UnitTests
             _loginService = new LoginService(fileServiceStub, baseUrl);
 
             //act
-            bool result = _loginService.TryRunWithCachedCredentials();
+            bool result = (bool)_loginService.TryRunWithCachedCredentials();
 
             //assert
             Assert.IsFalse(result);

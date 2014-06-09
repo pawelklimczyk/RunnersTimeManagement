@@ -139,6 +139,25 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
             Assert.AreEqual(-1, result.Status);
             Assert.AreEqual("Provide valid username and password", result.StatusDescription);
         }
+
+        [Test]
+        public void UserServiceLogin_LoggingWithValidCredentialsTwice_shouldLastTokenBeValid()
+        {
+            //arrange
+            string username = "initialUser";
+            string password = "initialPassword";
+
+            //act
+            var result = this._usersServiceSut.LoginUser(username, password);
+            var result2 = this._usersServiceSut.LoginUser(username, password);
+            var auth1Status = this._usersServiceSut.Authorize(result.Data.ToString());
+            var auth2Status = this._usersServiceSut.Authorize(result2.Data.ToString());
+
+            //assert
+            Assert.AreNotEqual(result.Data, result2.Data);
+            Assert.IsFalse((bool)auth1Status);
+            Assert.IsTrue((bool)auth2Status);
+        }
     }
 
     [TestFixture]

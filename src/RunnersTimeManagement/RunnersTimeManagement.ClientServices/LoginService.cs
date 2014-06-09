@@ -27,16 +27,17 @@ namespace RunnersTimeManagement.ClientServices
             _fileService = fileService;
         }
 
-
         public Task<OperationStatus> LoginUser(string username, string password)
         {
+            var user = new User() { Username = username, Password = password };
+
             var tcs = new TaskCompletionSource<OperationStatus>();
 
             var client = new RestClient(BaseUrl);
             var request = new RestRequest("api/users/login", Method.POST);
             request.RequestFormat = DataFormat.Json;
             
-            request.AddBody(new User() { Username = username, Password = password });
+            request.AddBody(user);
             //request.AddHeader("header", "value");
 
             client.ExecuteAsync(request, response =>
@@ -45,8 +46,11 @@ namespace RunnersTimeManagement.ClientServices
                 {
                     var data = JsonConvert.DeserializeObject<OperationStatus>(response.Content);
 
-                    //TODO check status and if true-> read token and save locally
-                    
+                    if (data != null && (bool)data)
+                    {
+                        SaveUserToCache(new User() { AccessToken = data.Data.ToString() });
+                    }
+
                     tcs.SetResult(data);
                 }
                 else
@@ -58,11 +62,18 @@ namespace RunnersTimeManagement.ClientServices
             return tcs.Task;
         }
 
-        public bool TryRunWithCachedCredentials()
+        public OperationStatus TryRunWithCachedCredentials()
         {
             User cachedUser = this.GetUserFromCache();
 
-            return cachedUser != null && !string.IsNullOrEmpty(cachedUser.Password) && !string.IsNullOrEmpty(cachedUser.Username) && !string.IsNullOrEmpty(cachedUser.AccessToken);
+            if (cachedUser != null && !string.IsNullOrEmpty(cachedUser.AccessToken))
+            {
+                return OperationStatus.Passed("Token exists", cachedUser.AccessToken);
+            }
+            else
+            {
+                return OperationStatus.Failed("Token does not exist");
+            }
         }
 
         private User GetUserFromCache()

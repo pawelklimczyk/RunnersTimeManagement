@@ -14,7 +14,8 @@ namespace RunnersTimeManagement.WP8
 
         public static void Navigate(Page newPage)
         {
-            if (currentPage != newPage)
+            //fixme:handle back button
+           // if (currentPage != newPage)
             {
                 currentPage = newPage;
 

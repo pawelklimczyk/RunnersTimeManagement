@@ -23,6 +23,12 @@ namespace RunnersTimeManagement.WP8
             }
         }
 
+        public string AccessToken
+        {
+            get;
+            private set;
+        }
+
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
         public App()
@@ -45,8 +51,10 @@ namespace RunnersTimeManagement.WP8
 
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            if (LoginService.TryRunWithCachedCredentials())
+            var status = LoginService.TryRunWithCachedCredentials();
+            if ((bool)status)
             {
+                AccessToken = status.Data.ToString();
                 PageRouter.Navigate(Page.EntriesList);
             }
             else

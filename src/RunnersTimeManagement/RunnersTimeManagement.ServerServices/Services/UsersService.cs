@@ -69,8 +69,7 @@ namespace RunnersTimeManagement.ServerServices.Services
 
                 existingUser.AccessToken = tokenProvider.GenerateToken(username, password);
 
-
-                db.Update(existingUser);
+                int rowUpdated = db.Update(existingUser);
 
                 return OperationStatus.Passed("User logged in", existingUser.AccessToken);
             }
