@@ -10,7 +10,9 @@ CREATE TABLE user (
 
 CREATE TABLE timeentry(
 	id          INTEGER PRIMARY KEY AUTOINCREMENT,
-	entryDate   DATETIME
+	userId		INTEGER NOT NULL,
+	entryDate   DATETIME,
 	distance    DOUBLE,
-	timeElapsed INTEGER 
+	timeElapsed INTEGER,
+	FOREIGN KEY(userId) REFERENCES user(id)
 );

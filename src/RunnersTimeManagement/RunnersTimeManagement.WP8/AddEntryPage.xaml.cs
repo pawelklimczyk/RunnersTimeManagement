@@ -10,16 +10,26 @@ namespace RunnersTimeManagement.WP8
 
     using Microsoft.Phone.Controls;
 
+    using RunnersTimeManagement.Core.Domain;
+    using RunnersTimeManagement.WP8.Commands;
+
     public partial class AddEntryPage : PhoneApplicationPage
     {
         private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
 
+        public TimeEntry TimeEntry { get; set; }
+
         public AddEntryPage()
         {
+            TimeEntry = new TimeEntry();
+            this.DataContext = TimeEntry;
             this.InitializeComponent();
 
             this.appBarBuilder.BuildAppBar(this);
             this.appBarBuilder.WireEvents();
+            
+            this.uxAddButton.CommandParameter = TimeEntry;
+            this.uxAddButton.Command = new AddTimeEntryCommand();
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

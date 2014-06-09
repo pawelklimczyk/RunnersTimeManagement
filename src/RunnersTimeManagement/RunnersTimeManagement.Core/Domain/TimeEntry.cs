@@ -10,7 +10,13 @@ namespace RunnersTimeManagement.Core.Domain
 
     public class TimeEntry
     {
+        public TimeEntry()
+        {
+            EntryDate = DateTime.Now;
+        }
+
         public long Id { get; set; }
+        public long UserId { get; set; }
 
         public DateTime EntryDate { get; set; }
 
@@ -23,7 +29,6 @@ namespace RunnersTimeManagement.Core.Domain
         ///     In seconds
         /// </summary>
         public double TimeElapsed { get; set; }
-
 
         /// <summary>
         /// in km/h

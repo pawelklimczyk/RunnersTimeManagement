@@ -44,6 +44,16 @@ namespace RunnersTimeManagement.ServerServices
                     x.Column(y => y.Id).WithName("id");
                     x.Column(y => y.Password).WithName("password");
                     x.Column(y => y.AccessToken).WithName("accesstoken");
+                }); 
+            
+            this.For<TimeEntry>().Columns(x =>
+                {
+                    x.Column(y => y.UserId).WithName("userId");
+                    x.Column(y => y.Id).WithName("id");
+                    x.Column(y => y.EntryDate).WithName("entryDate");
+                    x.Column(y => y.Distance).WithName("distance");
+                    x.Column(y => y.TimeElapsed).WithName("timeElapsed");
+                    x.Column(y => y.AverageSpeed).Ignore();
                 });
         }
     }

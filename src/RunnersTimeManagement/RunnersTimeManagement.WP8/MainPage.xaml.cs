@@ -22,6 +22,15 @@ namespace RunnersTimeManagement.WP8
             this.appBarBuilder.WireEvents();
         }
 
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            //TODO
+            //FetchTimeEntries();
+
+
+        }
+
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             this.appBarBuilder.UnwireEvents();

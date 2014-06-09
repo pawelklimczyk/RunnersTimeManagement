@@ -124,9 +124,7 @@ namespace RunnersTimeManagement.ClientServices
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     var data = JsonConvert.DeserializeObject<OperationStatus>(response.Content);
-
-                    //TODO check status and if true-> read token and save locally
-
+                    
                     tcs.SetResult(data);
                 }
                 else

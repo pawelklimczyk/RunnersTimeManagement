@@ -6,7 +6,6 @@
 
 namespace RunnersTimeManagement.WebServer.Controllers
 {
-    using System;
     using System.Web.Http;
 
     using RunnersTimeManagement.Core.Domain;
@@ -23,18 +22,43 @@ namespace RunnersTimeManagement.WebServer.Controllers
             }
         }
 
+        private UsersService usersService;
+        public UsersService _usersService
+        {
+            get
+            {
+                return usersService ?? (usersService = new UsersService());
+            }
+        }
+
         [HttpPost]
         [ActionName("add")]
-        public OperationStatus PostLogin(User model)
+        public OperationStatus PostAddTimeEntry(TimeEntry timeEntry)
         {
-            throw new NotImplementedException();
+            string token = ServerHelpers.GetAccessTokenFromRequest(this.Request);
+            if ((bool)_usersService.Authorize(token))
+            {
+                return _timeService.InsertTimeEntry(timeEntry, token);
+            }
+            else
+            {
+                return OperationStatus.Failed("Token is invalid");
+            }
         }
 
         [HttpPost]
         [ActionName("list")]
-        public OperationStatus PostCreateAccount(User model)
+        public OperationStatus PostGetTimeEntries()
         {
-            throw new NotImplementedException();
+            string token = ServerHelpers.GetAccessTokenFromRequest(this.Request);
+            if ((bool)_usersService.Authorize(token))
+            {
+                return _timeService.GetTimeEntryList(token);
+            }
+            else
+            {
+                return OperationStatus.Failed("Token is invalid");
+            }
         }
     }
 }
