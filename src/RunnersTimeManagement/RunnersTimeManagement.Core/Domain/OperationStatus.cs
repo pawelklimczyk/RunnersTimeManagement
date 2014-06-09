@@ -13,18 +13,17 @@ namespace RunnersTimeManagement.Core.Domain
         public string StatusDescription { get; set; }
 
         public object Data { get; set; }
-
         public static explicit operator bool(OperationStatus status)
         {
             return status.Status == 0;
         }
 
-        public static OperationStatus Failed(string message)
-        {
+        public static OperationStatus Failed(string message, object data = null)        {
             return new OperationStatus()
                        {
                            Status = StatusCode.Failed,
-                           StatusDescription = message
+                           StatusDescription = message,
+                           Data = data
                        };
         }
 
@@ -43,7 +42,5 @@ namespace RunnersTimeManagement.Core.Domain
             public const int Failed = -1;
             public const int Successful = 0;
         }
-
-
     }
 }

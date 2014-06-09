@@ -13,9 +13,14 @@ namespace RunnersTimeManagement.ServerServices.Services
 
     public class UsersService : AbstractDatabaseService
     {
-        public UsersService(IDatabaseProvider provider = null)
+        private readonly IAccessTokenProvider tokenProvider;
+
+        public UsersService(IDatabaseProvider provider = null, IAccessTokenProvider tokenProvider = null)
             : base(provider)
         {
+            if (tokenProvider == null) tokenProvider = new AccessTokenProvider();
+
+            this.tokenProvider = tokenProvider;
         }
 
         public OperationStatus CreateUser(string username, string password)
@@ -62,13 +67,27 @@ namespace RunnersTimeManagement.ServerServices.Services
                     return OperationStatus.Failed("Provide valid username and password");
                 }
 
-                IAccessTokenProvider tokenProvider = new AccessTokenProvider();
+                existingUser.AccessToken = tokenProvider.GenerateToken(username, password);
 
-                existingUser.AccessToken = tokenProvider.GenerateToken();
 
                 db.Update(existingUser);
 
                 return OperationStatus.Passed("User logged in", existingUser.AccessToken);
+            }
+        }
+
+        public OperationStatus Authorize(string accessToken)
+        {
+            using (IDatabase db = this.CurrentDatabase)
+            {
+                var existingUser = db.SingleOrDefault<User>("where accessToken=@0", accessToken);
+
+                if (existingUser == null)
+                {
+                    return OperationStatus.Failed("Token is invalid", false);
+                }
+
+                return OperationStatus.Passed("Token is valid", true);
             }
         }
     }

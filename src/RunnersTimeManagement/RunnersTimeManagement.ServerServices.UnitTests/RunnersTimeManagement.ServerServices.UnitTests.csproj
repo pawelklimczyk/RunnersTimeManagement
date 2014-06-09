@@ -59,7 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessTokenProviderTests.cs" />
     <Compile Include="TestsDatabaseProvider.cs" />
+    <Compile Include="TimeServiceTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UsersServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

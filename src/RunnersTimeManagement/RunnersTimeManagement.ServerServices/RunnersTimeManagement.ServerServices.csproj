@@ -52,6 +52,7 @@
     <Compile Include="Services\DatabaseProvider.cs" />
     <Compile Include="Services\AbstractDatabaseService.cs" />
     <Compile Include="Services\UsersService.cs" />
+    <Compile Include="Services\TimeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RunnersTimeManagement.Core\RunnersTimeManagement.Core.csproj">

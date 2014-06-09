@@ -6,17 +6,28 @@
 
 namespace RunnersTimeManagement.ServerServices.AccessTokenProvider
 {
+    using System;
+    using System.Globalization;
+
     public class AccessTokenProvider : IAccessTokenProvider
     {
-        public string GenerateToken()
+        public string GenerateToken(string username, string password)
         {
-            //TODO
-            return "default_token";
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                throw new ArgumentException("username");
+            }
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                throw new ArgumentException("password");
+            }
+
+            return (username + password + DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture)).GetHashCode().ToString(CultureInfo.InvariantCulture);
         }
     }
 
     public interface IAccessTokenProvider
     {
-        string GenerateToken();
+        string GenerateToken(string username, string password);
     }
 }
