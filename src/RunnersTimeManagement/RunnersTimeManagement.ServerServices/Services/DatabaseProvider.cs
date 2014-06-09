@@ -53,6 +53,32 @@ namespace RunnersTimeManagement.ServerServices.Services
                 return false;
             }
         }
+
+
+        public void EnsureDatabaseExists()
+        {
+            System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
+
+            builder.ConnectionString = ConnectionString;
+
+            string databaseFilename = builder["Data Source"] as string;
+
+            if (!File.Exists(databaseFilename))
+            {
+                this.InitDatabase();
+            }
+        }
+    }
+
+    public class DatabaseProvider : AbstractDatabaseProvider
+    {
+        public override string ConnectionString
+        {
+            get
+            {
+                return "Data Source=database-production.db";
+            }
+        }
     }
 
     public interface IDatabaseProvider
@@ -60,5 +86,7 @@ namespace RunnersTimeManagement.ServerServices.Services
         string ConnectionString { get; }
 
         bool InitDatabase();
+
+        void EnsureDatabaseExists();
     }
 }

@@ -13,7 +13,7 @@ namespace RunnersTimeManagement.ServerServices.Services
 
     public class UsersService : AbstractDatabaseService
     {
-        public UsersService(IDatabaseProvider provider)
+        public UsersService(IDatabaseProvider provider = null)
             : base(provider)
         {
         }
@@ -41,6 +41,7 @@ namespace RunnersTimeManagement.ServerServices.Services
                 User newUser = new User() { Username = username, Password = password };
 
                 db.Insert(newUser);
+
                 return OperationStatus.Passed("User was created sucessfully");
             }
         }
@@ -55,17 +56,16 @@ namespace RunnersTimeManagement.ServerServices.Services
             using (IDatabase db = this.CurrentDatabase)
             {
                 var existingUser = db.SingleOrDefault<User>("where username=@0 and password=@1", username, password);
-                
+
                 if (existingUser == null)
                 {
                     return OperationStatus.Failed("Provide valid username and password");
                 }
 
-
                 IAccessTokenProvider tokenProvider = new AccessTokenProvider();
 
                 existingUser.AccessToken = tokenProvider.GenerateToken();
-                
+
                 db.Update(existingUser);
 
                 return OperationStatus.Passed("User logged in", existingUser.AccessToken);

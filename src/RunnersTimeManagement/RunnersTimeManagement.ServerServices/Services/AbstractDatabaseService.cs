@@ -26,8 +26,13 @@ namespace RunnersTimeManagement.ServerServices.Services
 
         protected AbstractDatabaseService(IDatabaseProvider provider)
         {
-            this._databaseProvider = provider;
+            if (provider == null)
+            {
+                provider= new DatabaseProvider();
+            }
 
+            this._databaseProvider = provider;
+            this._databaseProvider.EnsureDatabaseExists();
             this.InitializeMapping();
         }
 

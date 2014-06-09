@@ -6,19 +6,9 @@
 
 namespace RunnersTimeManagement.WP8
 {
-    using System.Windows.Controls;
-    using System.Windows.Data;
-
     using Microsoft.Phone.Controls;
 
     public class BasePage : PhoneApplicationPage
     {
-        internal void OnTextBoxTextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            // Update the binding source
-            BindingExpression bindingExpr = textBox.GetBindingExpression(TextBox.TextProperty);
-            bindingExpr.UpdateSource();
-        } 
     }
 }

@@ -22,6 +22,7 @@ namespace RunnersTimeManagement.WP8
                 return loginService ?? (loginService = new LoginService(new FileService(), AppConfiguration.BaseUrl));
             }
         }
+
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
         public App()

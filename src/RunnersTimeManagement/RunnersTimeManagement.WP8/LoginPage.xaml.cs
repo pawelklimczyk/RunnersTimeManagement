@@ -6,8 +6,6 @@
 
 namespace RunnersTimeManagement.WP8
 {
-    using Microsoft.Phone.Controls;
-
     using RunnersTimeManagement.Core.Domain;
     using RunnersTimeManagement.WP8.Commands;
 
