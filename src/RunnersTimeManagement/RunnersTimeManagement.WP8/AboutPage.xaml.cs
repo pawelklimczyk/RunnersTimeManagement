@@ -10,7 +10,7 @@ namespace RunnersTimeManagement.WP8
 
     using Microsoft.Phone.Controls;
 
-    public partial class AboutPage : PhoneApplicationPage
+    public partial class AboutPage : BasePage
     {
         private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
 

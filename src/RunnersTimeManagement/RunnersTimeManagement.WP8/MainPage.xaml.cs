@@ -13,15 +13,14 @@ namespace RunnersTimeManagement.WP8
 
     using RunnersTimeManagement.Core.Domain;
 
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage : BasePage
     {
         private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
-
 
         public MainPage()
         {
             this.InitializeComponent();
-
+            this.DataContext = this;
             this.appBarBuilder.BuildAppBar(this);
             this.appBarBuilder.WireEvents();
         }
@@ -35,9 +34,11 @@ namespace RunnersTimeManagement.WP8
 
         private async void FetchTimeEntries()
         {
+            IsBusy = true;
             var operationStatus = await App.TimeService.GetTimeEntryList();
             List<TimeEntry> list = (List<TimeEntry>)operationStatus.Data;
             uxTimeEntries.ItemsSource = list;
+            IsBusy = false;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

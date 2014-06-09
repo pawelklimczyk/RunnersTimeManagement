@@ -13,7 +13,7 @@ namespace RunnersTimeManagement.WP8
     using RunnersTimeManagement.Core.Domain;
     using RunnersTimeManagement.WP8.Commands;
 
-    public partial class AddEntryPage : PhoneApplicationPage
+    public partial class AddEntryPage : BasePage
     {
         private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
 
