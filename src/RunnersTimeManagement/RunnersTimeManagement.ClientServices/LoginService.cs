@@ -36,9 +36,8 @@ namespace RunnersTimeManagement.ClientServices
             var client = new RestClient(BaseUrl);
             var request = new RestRequest("api/users/login", Method.POST);
             request.RequestFormat = DataFormat.Json;
-            
+
             request.AddBody(user);
-            //request.AddHeader("header", "value");
 
             client.ExecuteAsync(request, response =>
             {
@@ -49,6 +48,7 @@ namespace RunnersTimeManagement.ClientServices
                     if (data != null && (bool)data)
                     {
                         SaveUserToCache(new User() { AccessToken = data.Data.ToString() });
+                        AppConfiguration.Token = data.Data.ToString();
                     }
 
                     tcs.SetResult(data);

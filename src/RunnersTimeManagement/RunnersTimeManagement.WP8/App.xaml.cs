@@ -23,10 +23,14 @@ namespace RunnersTimeManagement.WP8
             }
         }
 
-        public string AccessToken
+        private static TimeService timeService;
+
+        public static TimeService TimeService
         {
-            get;
-            private set;
+            get
+            {
+                return timeService ?? (timeService = new TimeService(AppConfiguration.BaseUrl));
+            }
         }
 
         public static PhoneApplicationFrame RootFrame { get; private set; }
@@ -54,7 +58,7 @@ namespace RunnersTimeManagement.WP8
             var status = LoginService.TryRunWithCachedCredentials();
             if ((bool)status)
             {
-                AccessToken = status.Data.ToString();
+               AppConfiguration.Token = status.Data.ToString();
                 PageRouter.Navigate(Page.EntriesList);
             }
             else

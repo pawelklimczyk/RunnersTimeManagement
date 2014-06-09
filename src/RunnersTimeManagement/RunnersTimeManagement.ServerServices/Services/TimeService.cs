@@ -8,7 +8,7 @@ namespace RunnersTimeManagement.ServerServices.Services
 {
     public class TimeService : AbstractDatabaseService
     {
-        public TimeService(IDatabaseProvider provider)
+        public TimeService(IDatabaseProvider provider = null)
             : base(provider)
         {
 

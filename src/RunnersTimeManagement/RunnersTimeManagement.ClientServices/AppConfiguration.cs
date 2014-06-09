@@ -4,10 +4,12 @@
 // </copyright>
 // -------------------------------------------------------------------------------------------------------------------
 
-namespace RunnersTimeManagement.WP8
+namespace RunnersTimeManagement.ClientServices
 {
     public class AppConfiguration
     {
         public static string BaseUrl = "http://192.168.190.102";
+
+        public static string Token;
     }
 }

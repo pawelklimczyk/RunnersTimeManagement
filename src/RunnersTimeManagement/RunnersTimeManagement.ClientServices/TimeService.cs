@@ -19,8 +19,13 @@ namespace RunnersTimeManagement.ClientServices
 
         public async Task<OperationStatus> AddTimeEntry(TimeEntry timeEntry)
         {
-            var client = new RestClient("http://api.toodledo.com/2");
-            var request = new RestRequest("account/lookup.php", Method.GET);
+            var client = new RestClient(BaseUrl);
+            var request = new RestRequest("api/time/add", Method.POST);
+            request.RequestFormat = DataFormat.Json;
+
+            request.AddBody(timeEntry);
+            request.AddHeader("auth-token", AppConfiguration.Token);
+
             client.ExecuteAsync(request, resp =>
             {
                 if (resp.StatusCode == System.Net.HttpStatusCode.OK)
