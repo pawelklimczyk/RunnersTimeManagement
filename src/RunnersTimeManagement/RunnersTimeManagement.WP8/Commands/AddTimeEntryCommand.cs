@@ -14,6 +14,13 @@ namespace RunnersTimeManagement.WP8.Commands
 
     public class AddTimeEntryCommand : ICommand
     {
+        private readonly BasePage basePage;
+
+        public AddTimeEntryCommand(BasePage basePage)
+        {
+            this.basePage = basePage;
+        }
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -30,8 +37,9 @@ namespace RunnersTimeManagement.WP8.Commands
                     MessageBox.Show("Please provide date, distance and time elapsed");
                     return;
                 }
-
+                this.basePage.IsBusy = true;    
                 var operationStatus = await App.TimeService.AddTimeEntry(timeEntry);
+                this.basePage.IsBusy = false;
 
                 MessageBox.Show(operationStatus.StatusDescription);
             }

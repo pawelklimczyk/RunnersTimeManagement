@@ -8,8 +8,6 @@ namespace RunnersTimeManagement.WP8
 {
     using System.Windows.Navigation;
 
-    using Microsoft.Phone.Controls;
-
     using RunnersTimeManagement.Core.Domain;
     using RunnersTimeManagement.WP8.Commands;
 
@@ -29,7 +27,7 @@ namespace RunnersTimeManagement.WP8
             this.appBarBuilder.WireEvents();
             
             this.uxAddButton.CommandParameter = TimeEntry;
-            this.uxAddButton.Command = new AddTimeEntryCommand();
+            this.uxAddButton.Command = new AddTimeEntryCommand(this);
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

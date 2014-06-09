@@ -22,7 +22,7 @@ namespace RunnersTimeManagement.WP8
 
             this.uxCreateAccountButton.Command = new NavigateToNewAccountCommand();
             this.uxLoginButton.CommandParameter = UserWithCredentialsToValidate;
-            this.uxLoginButton.Command = new LoginUserCommand();
+            this.uxLoginButton.Command = new LoginUserCommand(this);
         }
     }
 }

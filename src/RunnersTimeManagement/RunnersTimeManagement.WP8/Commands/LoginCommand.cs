@@ -14,6 +14,13 @@ namespace RunnersTimeManagement.WP8.Commands
 
     public class LoginUserCommand : ICommand
     {
+        private readonly BasePage basePage;
+
+        public LoginUserCommand(BasePage basePage)
+        {
+            this.basePage = basePage;
+        }
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -30,8 +37,9 @@ namespace RunnersTimeManagement.WP8.Commands
                     MessageBox.Show("Please provide username and password");
                     return;
                 }
-
+                this.basePage.IsBusy = true;
                 var operationStatus = await App.LoginService.LoginUser(user.Username, user.Password);
+                this.basePage.IsBusy = false;
 
                 if ((bool)operationStatus)
                 {

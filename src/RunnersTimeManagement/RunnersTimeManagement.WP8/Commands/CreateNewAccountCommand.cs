@@ -14,6 +14,13 @@ namespace RunnersTimeManagement.WP8.Commands
 
     public class CreateNewAccountCommand : ICommand
     {
+        private readonly BasePage basePage;
+
+        public CreateNewAccountCommand(BasePage basePage)
+        {
+            this.basePage = basePage;
+        }
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -36,12 +43,12 @@ namespace RunnersTimeManagement.WP8.Commands
                     MessageBox.Show("Passwords does not match");
                     return;
                 }
-
+                this.basePage.IsBusy = true;    
                 var operationStatus = await App.LoginService.CreateUser(user.Username, user.Password);
-
+                this.basePage.IsBusy = false;    
                 if ((bool)operationStatus)
                 {
-                    var loginCommand = new LoginUserCommand();
+                    var loginCommand = new LoginUserCommand(this.basePage);
                     loginCommand.Execute(new User() { Username = user.Username, Password = user.Password });
                 }
                 else

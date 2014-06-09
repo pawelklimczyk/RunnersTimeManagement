@@ -11,7 +11,7 @@ namespace RunnersTimeManagement.WP8
     using RunnersTimeManagement.Core.Domain;
     using RunnersTimeManagement.WP8.Commands;
 
-    public partial class CreateAccountPage : PhoneApplicationPage
+    public partial class CreateAccountPage : BasePage
     {
         public UserWith2Passwords UserWithCredentialsToValidate { get; set; }
 
@@ -23,7 +23,7 @@ namespace RunnersTimeManagement.WP8
             this.InitializeComponent();
 
             this.uxCreateAccountButton.CommandParameter = UserWithCredentialsToValidate;
-            this.uxCreateAccountButton.Command = new CreateNewAccountCommand();
+            this.uxCreateAccountButton.Command = new CreateNewAccountCommand(this);
         }
     }
 
