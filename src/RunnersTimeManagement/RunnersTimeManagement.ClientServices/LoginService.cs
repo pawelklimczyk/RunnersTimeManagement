@@ -96,5 +96,35 @@ namespace RunnersTimeManagement.ClientServices
                 return false;
             }
         }
+
+        public Task<OperationStatus> CreateUser(string username, string password)
+        {
+            var tcs = new TaskCompletionSource<OperationStatus>();
+
+            var client = new RestClient(BaseUrl);
+            var request = new RestRequest("api/users/createAccount", Method.POST);
+            request.RequestFormat = DataFormat.Json;
+
+            request.AddBody(new User() { Username = username, Password = password });
+            //request.AddHeader("header", "value");
+
+            client.ExecuteAsync(request, response =>
+            {
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var data = JsonConvert.DeserializeObject<OperationStatus>(response.Content);
+
+                    //TODO check status and if true-> read token and save locally
+
+                    tcs.SetResult(data);
+                }
+                else
+                {
+                    tcs.SetResult(OperationStatus.Failed("Error login in!"));
+                }
+            });
+
+            return tcs.Task;
+        }
     }
 }

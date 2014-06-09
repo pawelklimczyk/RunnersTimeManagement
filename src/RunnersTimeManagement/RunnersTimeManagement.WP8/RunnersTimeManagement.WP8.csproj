@@ -102,6 +102,7 @@
     <Compile Include="AppBarBuilder.cs" />
     <Compile Include="AppConfiguration.cs" />
     <Compile Include="BasePage.cs" />
+    <Compile Include="Commands\CreateNewAccountCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\NavigateToNewAccountCommand.cs" />
     <Compile Include="CreateAccountPage.xaml.cs">

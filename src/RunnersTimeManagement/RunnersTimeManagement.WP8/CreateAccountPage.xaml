@@ -27,7 +27,25 @@
         </StackPanel>
 
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-    
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0">Username</TextBlock>
+            <TextBox Name="uxUsername" Grid.Row="1" Text="{Binding Path=Username, Mode=TwoWay}" />
+            <TextBlock Grid.Row="2">Password</TextBlock>
+            <PasswordBox Name="uxPassword" Grid.Row="3" Password="{Binding Path=Password, Mode=TwoWay}" />
+            <TextBlock Grid.Row="4">Password (retype)</TextBlock>
+            <PasswordBox Name="uxPassword2" Grid.Row="5" Password="{Binding Path=PasswordRetype, Mode=TwoWay}" />
+            <StackPanel Grid.Row="6" Margin="0 100 0 0">
+                <Button Name="uxCreateAccountButton">Create</Button>
+            </StackPanel>
         </Grid>
     </Grid>
 
