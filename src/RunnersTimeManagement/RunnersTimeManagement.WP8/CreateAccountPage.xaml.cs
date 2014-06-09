@@ -19,7 +19,7 @@ namespace RunnersTimeManagement.WP8
         {
             UserWithCredentialsToValidate = new UserWith2Passwords();
 
-            this.DataContext = UserWithCredentialsToValidate;
+            this.DataContext = this;
             this.InitializeComponent();
 
             this.uxCreateAccountButton.CommandParameter = UserWithCredentialsToValidate;

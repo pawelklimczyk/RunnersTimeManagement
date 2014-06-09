@@ -105,6 +105,7 @@
     <Compile Include="Commands\CreateNewAccountCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\NavigateToNewAccountCommand.cs" />
+    <Compile Include="Controls\BoolReverseConverter.cs" />
     <Compile Include="CreateAccountPage.xaml.cs">
       <DependentUpon>CreateAccountPage.xaml</DependentUpon>
     </Compile>

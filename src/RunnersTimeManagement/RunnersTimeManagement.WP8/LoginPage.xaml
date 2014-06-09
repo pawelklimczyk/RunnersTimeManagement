@@ -43,12 +43,12 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0">Username</TextBlock>
-            <TextBox Name="uxUsername" Grid.Row="1" Text="{Binding Path=Username, Mode=TwoWay}" />
+            <TextBox Name="uxUsername" Grid.Row="1" Text="{Binding Path=UserWithCredentialsToValidate.Username, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
             <TextBlock Grid.Row="2">Password</TextBlock>
-            <PasswordBox Name="uxPassword" Grid.Row="3" Password="{Binding Path=Password, Mode=TwoWay}" />
+            <PasswordBox Name="uxPassword" Grid.Row="3" Password="{Binding Path=UserWithCredentialsToValidate.Password, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
             <StackPanel Grid.Row="4" Margin="0 100 0 0">
-                <Button Name="uxLoginButton">Login</Button>
-                <Button Name="uxCreateAccountButton">Create account</Button>
+                <Button Name="uxLoginButton" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" >Login</Button>
+                <Button Name="uxCreateAccountButton" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" >Create account</Button>
             </StackPanel>
         </Grid>
     </Grid>

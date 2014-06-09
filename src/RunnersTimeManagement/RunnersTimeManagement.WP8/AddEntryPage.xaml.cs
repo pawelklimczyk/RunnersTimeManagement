@@ -20,7 +20,7 @@ namespace RunnersTimeManagement.WP8
         public AddEntryPage()
         {
             TimeEntry = new TimeEntry();
-            this.DataContext = TimeEntry;
+            this.DataContext = this;
             this.InitializeComponent();
 
             this.appBarBuilder.BuildAppBar(this);

@@ -43,13 +43,13 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0">Username</TextBlock>
-            <TextBox Name="uxUsername" Grid.Row="1" Text="{Binding Path=Username, Mode=TwoWay}" />
+            <TextBox Name="uxUsername" Grid.Row="1" Text="{Binding Path=UserWithCredentialsToValidate.Username, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" />
             <TextBlock Grid.Row="2">Password</TextBlock>
-            <PasswordBox Name="uxPassword" Grid.Row="3" Password="{Binding Path=Password, Mode=TwoWay}" />
+            <PasswordBox Name="uxPassword" Grid.Row="3" Password="{Binding Path=UserWithCredentialsToValidate.Password, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" />
             <TextBlock Grid.Row="4">Password (retype)</TextBlock>
-            <PasswordBox Name="uxPassword2" Grid.Row="5" Password="{Binding Path=PasswordRetype, Mode=TwoWay}" />
+            <PasswordBox Name="uxPassword2" Grid.Row="5" Password="{Binding Path=UserWithCredentialsToValidate.PasswordRetype, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
             <StackPanel Grid.Row="6" Margin="0 100 0 0">
-                <Button Name="uxCreateAccountButton">Create</Button>
+                <Button Name="uxCreateAccountButton" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" >Create</Button>
             </StackPanel>
         </Grid>
     </Grid>

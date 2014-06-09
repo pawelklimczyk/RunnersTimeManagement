@@ -17,7 +17,7 @@ namespace RunnersTimeManagement.WP8
         {
             UserWithCredentialsToValidate = new User();
 
-            this.DataContext = UserWithCredentialsToValidate;
+            this.DataContext = this;
             this.InitializeComponent();
 
             this.uxCreateAccountButton.Command = new NavigateToNewAccountCommand();

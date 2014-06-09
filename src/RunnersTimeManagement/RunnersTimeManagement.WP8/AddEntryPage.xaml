@@ -47,13 +47,13 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0">Date</TextBlock>
-            <toolkit:DatePicker  Name="uxDate" Grid.Row="1" Value="{Binding Path=EntryDate, Mode=TwoWay}" />
+            <toolkit:DatePicker Name="uxDate" Grid.Row="1" Value="{Binding Path=TimeEntry.EntryDate, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
             <TextBlock Grid.Row="2">Distance (meters)</TextBlock>
-            <TextBox Name="uxDistance" Grid.Row="3" Text="{Binding Path=Distance, Mode=TwoWay}" InputScope="Number"/>
+            <TextBox Name="uxDistance" Grid.Row="3" Text="{Binding Path=TimeEntry.Distance, Mode=TwoWay}" InputScope="Number" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" />
 
             <TextBlock Grid.Row="4">Time Elapsed (seconds)</TextBlock>
-            <TextBox Name="uxTimeElapsed" Grid.Row="5" Text="{Binding Path=TimeElapsed, Mode=TwoWay}" InputScope="Number"/>
-            <Button Grid.Row="6" Margin="0 100 0 0" Name="uxAddButton">Add</Button>
+            <TextBox Name="uxTimeElapsed" Grid.Row="5" Text="{Binding Path=TimeEntry.TimeElapsed, Mode=TwoWay}" InputScope="Number" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" />
+            <Button Grid.Row="6" Margin="0 100 0 0" Name="uxAddButton" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" >Add</Button>
         </Grid>
     </Grid>
 
