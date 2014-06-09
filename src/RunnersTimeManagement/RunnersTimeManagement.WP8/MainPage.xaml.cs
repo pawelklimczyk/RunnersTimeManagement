@@ -6,13 +6,17 @@
 
 namespace RunnersTimeManagement.WP8
 {
+    using System.Collections.Generic;
     using System.Windows.Navigation;
 
     using Microsoft.Phone.Controls;
 
+    using RunnersTimeManagement.Core.Domain;
+
     public partial class MainPage : PhoneApplicationPage
     {
         private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
+
 
         public MainPage()
         {
@@ -22,13 +26,18 @@ namespace RunnersTimeManagement.WP8
             this.appBarBuilder.WireEvents();
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            //TODO
-            //FetchTimeEntries();
 
+            FetchTimeEntries();
+        }
 
+        private async void FetchTimeEntries()
+        {
+            var operationStatus = await App.TimeService.GetTimeEntryList();
+            List<TimeEntry> list = (List<TimeEntry>)operationStatus.Data;
+            uxTimeEntries.ItemsSource = list;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)

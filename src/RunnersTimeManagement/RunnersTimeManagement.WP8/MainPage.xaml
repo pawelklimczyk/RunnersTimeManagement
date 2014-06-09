@@ -47,8 +47,38 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="110"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Date" />
+                    <TextBlock Grid.Column="1" Text="Distance" />
+                    <TextBlock Grid.Column="2" Text="Time elapsed" />
+                    <TextBlock Grid.Column="3" Text="Avg. speed" />
+                </Grid>
+                <ListBox Name="uxTimeEntries">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="110"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding EntryDate}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Distance}" />
+                                <TextBlock Grid.Column="2" Text="{Binding TimeElapsed}" />
+                                <TextBlock Grid.Column="3" Text="{Binding AverageSpeed}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
         </Grid>
-
     </Grid>
 </phone:PhoneApplicationPage>
