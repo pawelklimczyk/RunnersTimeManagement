@@ -48,7 +48,7 @@
                     <TextBlock Grid.Column="2" Text="Time elapsed" />
                     <TextBlock Grid.Column="3" Text="Avg. speed" />
                 </Grid>
-                <ListBox Name="uxTimeEntries">
+            <ListBox Name="uxTimeEntries" Grid.Row="1">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
