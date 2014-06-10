@@ -13,8 +13,6 @@ namespace RunnersTimeManagement.WP8
 
     public partial class AddEntryPage : BasePage
     {
-        private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
-
         public TimeEntry TimeEntry { get; set; }
 
         public AddEntryPage()
@@ -23,17 +21,12 @@ namespace RunnersTimeManagement.WP8
             this.DataContext = this;
             this.InitializeComponent();
 
-            this.appBarBuilder.BuildAppBar(this);
-            this.appBarBuilder.WireEvents();
-            
             this.uxAddButton.CommandParameter = TimeEntry;
             this.uxAddButton.Command = new AddTimeEntryCommand(this);
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            this.appBarBuilder.UnwireEvents();
-
             base.OnNavigatingFrom(e);
         }
     }

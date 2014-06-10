@@ -168,5 +168,25 @@ namespace RunnersTimeManagement.WP8
                 throw;
             }
         }
+
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            PageRouter.Navigate(Page.About);
+        }
+
+        private void showReportsButton_Click(object sender, EventArgs e)
+        {
+            PageRouter.Navigate(Page.Reports);
+        }
+
+        private void showListButton_Click(object sender, EventArgs e)
+        {
+            PageRouter.Navigate(Page.EntriesList);
+        }
+
+        private void addTimeEntryButton_Click(object sender, EventArgs e)
+        {
+            PageRouter.Navigate(Page.AddEntry);
+        }
     }
 }

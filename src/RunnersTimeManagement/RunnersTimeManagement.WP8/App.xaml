@@ -12,6 +12,14 @@
         <local:LocalizedStrings xmlns:local="clr-namespace:RunnersTimeManagement.WP8" x:Key="LocalizedStrings"/>
         <system:String x:Key="applicationTitle" >Runners Time Management</system:String>
         <controls:BoolReverseConverter x:Key="boolReverseConverter" />
+        <shell:ApplicationBar x:Key="GlobalAppBar" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/application_bar_add.png" Text="Add" Click="addTimeEntryButton_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/application_bar_list.png" Text="List" Click="showListButton_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/application_bar_reports.png" Text="Reports" Click="showReportsButton_Click" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="About" Click="aboutButton_Click" />
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

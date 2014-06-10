@@ -9,20 +9,14 @@ namespace RunnersTimeManagement.WP8
     using System.Collections.Generic;
     using System.Windows.Navigation;
 
-    using Microsoft.Phone.Controls;
-
     using RunnersTimeManagement.Core.Domain;
 
     public partial class MainPage : BasePage
     {
-        private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
-
         public MainPage()
         {
             this.InitializeComponent();
             this.DataContext = this;
-            this.appBarBuilder.BuildAppBar(this);
-            this.appBarBuilder.WireEvents();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -43,8 +37,6 @@ namespace RunnersTimeManagement.WP8
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            this.appBarBuilder.UnwireEvents();
-
             base.OnNavigatingFrom(e);
         }
     }

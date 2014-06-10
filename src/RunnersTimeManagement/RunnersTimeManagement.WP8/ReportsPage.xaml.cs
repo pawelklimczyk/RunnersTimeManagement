@@ -12,20 +12,14 @@ namespace RunnersTimeManagement.WP8
 
     public partial class ReportsPage : PhoneApplicationPage
     {
-        private readonly AppBarBuilder appBarBuilder = new AppBarBuilder();
-
         public ReportsPage()
         {
             this.InitializeComponent();
 
-            this.appBarBuilder.BuildAppBar(this);
-            this.appBarBuilder.WireEvents();
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            this.appBarBuilder.UnwireEvents();
-
             base.OnNavigatingFrom(e);
         }
     }
