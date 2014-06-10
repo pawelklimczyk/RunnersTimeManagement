@@ -36,6 +36,7 @@
     <Compile Include="Domain\OperationStatus.cs" />
     <Compile Include="Domain\TimeEntry.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\WeeklyReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

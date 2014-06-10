@@ -99,7 +99,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppBarBuilder.cs" />
     <Compile Include="BasePage.cs" />
     <Compile Include="Commands\AddTimeEntryCommand.cs" />
     <Compile Include="Commands\CreateNewAccountCommand.cs" />

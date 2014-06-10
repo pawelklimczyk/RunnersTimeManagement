@@ -58,7 +58,7 @@ namespace RunnersTimeManagement.WP8
             var status = LoginService.TryRunWithCachedCredentials();
             if ((bool)status)
             {
-               AppConfiguration.Token = status.Data.ToString();
+                AppConfiguration.Token = status.Data.ToString();
                 PageRouter.Navigate(Page.EntriesList);
             }
             else
@@ -91,7 +91,7 @@ namespace RunnersTimeManagement.WP8
 
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
-            //TODO Log
+            LoggingService.LogException(e.ExceptionObject);
 
             if (Debugger.IsAttached)
             {

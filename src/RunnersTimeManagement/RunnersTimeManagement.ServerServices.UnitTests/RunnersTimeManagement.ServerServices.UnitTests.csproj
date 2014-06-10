@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTokenProviderTests.cs" />
+    <Compile Include="ReportGeneratorTests.cs" />
     <Compile Include="TestsDatabaseProvider.cs" />
     <Compile Include="TimeServiceTests.cs">
       <SubType>Code</SubType>
