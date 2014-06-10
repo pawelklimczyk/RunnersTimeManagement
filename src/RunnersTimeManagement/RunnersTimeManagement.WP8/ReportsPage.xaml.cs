@@ -6,21 +6,32 @@
 
 namespace RunnersTimeManagement.WP8
 {
+    using System.Collections.Generic;
     using System.Windows.Navigation;
 
-    using Microsoft.Phone.Controls;
+    using RunnersTimeManagement.Core.Domain;
 
-    public partial class ReportsPage : PhoneApplicationPage
+    public partial class ReportsPage : BasePage
     {
         public ReportsPage()
         {
+            this.DataContext = this;
             this.InitializeComponent();
-
         }
 
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatingFrom(e);
+            base.OnNavigatedTo(e);
+            this.FetchReports();
+        }
+
+        private async void FetchReports()
+        {
+            IsBusy = true;
+            var operationStatus = await App.ReportsService.GetWeeklyReports();
+            List<WeeklyReport> list = (List<WeeklyReport>)operationStatus.Data;
+            uxReports.ItemsSource = list;
+            IsBusy = false;
         }
     }
 }

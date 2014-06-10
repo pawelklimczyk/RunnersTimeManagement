@@ -14,7 +14,6 @@ namespace RunnersTimeManagement.WP8
     public partial class App : Application
     {
         private static LoginService loginService;
-
         public static LoginService LoginService
         {
             get
@@ -24,12 +23,20 @@ namespace RunnersTimeManagement.WP8
         }
 
         private static TimeService timeService;
-
         public static TimeService TimeService
         {
             get
             {
                 return timeService ?? (timeService = new TimeService(AppConfiguration.BaseUrl));
+            }
+        }
+
+        private static ReportsService reportsService;
+        public static ReportsService ReportsService
+        {
+            get
+            {
+                return reportsService ?? (reportsService = new ReportsService(AppConfiguration.BaseUrl));
             }
         }
 

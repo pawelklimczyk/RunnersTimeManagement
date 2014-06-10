@@ -10,8 +10,6 @@ namespace RunnersTimeManagement.WebServer
     using System.Linq;
     using System.Net.Http;
 
-    using RunnersTimeManagement.ServerServices.Services;
-
     public class ServerHelpers
     {
         public static string GetAccessTokenFromRequest(HttpRequestMessage request)

@@ -39,12 +39,11 @@ namespace RunnersTimeManagement.Core.Domain
             {
                 if (Distance > 0 && TimeElapsed > 0)
                 {
-                    return Distance / TimeElapsed * 3.6;
+                    return Math.Round(Distance / TimeElapsed * 3.6, 2);
                 }
 
                 return 0;
             }
         }
-
     }
 }

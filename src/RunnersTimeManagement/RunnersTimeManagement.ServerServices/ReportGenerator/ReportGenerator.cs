@@ -35,13 +35,12 @@ namespace RunnersTimeManagement.ServerServices.ReportGenerator
 
                 if (entriesForCurrentWeek.Count > 0)
                 {
-                    report.AverageDistance = entriesForCurrentWeek.Average(entry => entry.Distance);
-                    report.AverageSpeed = entriesForCurrentWeek.Average(entry => entry.AverageSpeed);
+                    report.AverageDistance = Math.Round(entriesForCurrentWeek.Average(entry => entry.Distance), 2);
+                    report.AverageSpeed = Math.Round(entriesForCurrentWeek.Average(entry => entry.AverageSpeed), 2);
                 }
 
                 list.Add(report);
             }
-
 
             return list;
         }
