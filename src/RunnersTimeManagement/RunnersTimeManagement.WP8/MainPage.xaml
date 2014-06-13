@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wp8="clr-namespace:RunnersTimeManagement.WP8"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -28,7 +29,23 @@
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{StaticResource applicationTitle}" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="Entries" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="Entries" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1StyleCustom}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="120" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock TextAlignment="Center">From:</TextBlock>
+                    <toolkit:DatePicker Name="uxDateFrom" Grid.Row="1" Value="{Binding Path=TimeEntry.EntryDate, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock TextAlignment="Center">To:</TextBlock>
+                    <toolkit:DatePicker Name="uxDateTo" Grid.Row="1" Value="{Binding Path=TimeEntry.EntryDate, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
+                </StackPanel>
+                <Button Name="searchbutton" Grid.Column="2" Content="Search" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" Height="70" />
+            </Grid>
         </StackPanel>
 
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
@@ -38,34 +55,34 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="70"/>
-                        <ColumnDefinition Width="110"/>
-                        <ColumnDefinition Width="110"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Date" />
-                    <TextBlock Grid.Column="1" Text="Distance" />
-                    <TextBlock Grid.Column="2" Text="Time elapsed" />
-                    <TextBlock Grid.Column="3" Text="Avg. speed" />
-                </Grid>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="110"/>
+                    <ColumnDefinition Width="110"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Date" />
+                <TextBlock Grid.Column="1" Text="Distance" />
+                <TextBlock Grid.Column="2" Text="Time elapsed" />
+                <TextBlock Grid.Column="3" Text="Avg. speed" />
+            </Grid>
             <ListBox Name="uxTimeEntries" Grid.Row="1">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="70"/>
-                                    <ColumnDefinition Width="110"/>
-                                    <ColumnDefinition Width="110"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding EntryDate}" />
-                                <TextBlock Grid.Column="1" Text="{Binding Distance}" />
-                                <TextBlock Grid.Column="2" Text="{Binding TimeElapsed}" />
-                                <TextBlock Grid.Column="3" Text="{Binding AverageSpeed}" />
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="110"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding EntryDate}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Distance}" />
+                            <TextBlock Grid.Column="2" Text="{Binding TimeElapsed}" />
+                            <TextBlock Grid.Column="3" Text="{Binding AverageSpeed}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
     </Grid>
 </wp8:BasePage>

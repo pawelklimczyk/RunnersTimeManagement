@@ -22,8 +22,10 @@ namespace RunnersTimeManagement.WP8
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            FetchTimeEntries();
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                FetchTimeEntries();
+            }
         }
 
         private async void FetchTimeEntries()
@@ -33,11 +35,6 @@ namespace RunnersTimeManagement.WP8
             List<TimeEntry> list = (List<TimeEntry>)operationStatus.Data;
             uxTimeEntries.ItemsSource = list;
             IsBusy = false;
-        }
-
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-            base.OnNavigatingFrom(e);
         }
     }
 }

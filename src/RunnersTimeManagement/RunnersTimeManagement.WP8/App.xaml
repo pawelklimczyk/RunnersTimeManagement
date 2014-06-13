@@ -20,6 +20,10 @@
                 <shell:ApplicationBarMenuItem Text="About" Click="aboutButton_Click" />
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
+        <Style x:Key="PhoneTextTitle1StyleCustom" TargetType="TextBlock" >
+            <Setter Property="FontSize" Value="24"></Setter>
+            <Setter Property="TextAlignment" Value="Center" />
+            </Style>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

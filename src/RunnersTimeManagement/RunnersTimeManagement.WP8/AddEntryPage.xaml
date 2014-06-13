@@ -30,7 +30,7 @@
         </shell:SystemTray.ProgressIndicator>
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{StaticResource applicationTitle}" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="Add new entry" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="Add new entry" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1StyleCustom}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
