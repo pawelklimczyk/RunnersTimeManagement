@@ -46,4 +46,35 @@ namespace RunnersTimeManagement.Core.Domain
             }
         }
     }
+
+    public class TimeEntryFilter
+    {
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+
+        public OperationStatus Validate()
+        {
+            if (StartDate == null && EndDate == null)
+            {
+                return OperationStatus.Passed("No filter specified");
+            }
+
+            if (StartDate <= EndDate)
+            {
+                return OperationStatus.Passed("Valid filter");
+            }
+
+            if (StartDate == null)
+            {
+                return OperationStatus.Failed("Please provide start date");
+            }
+
+            if (EndDate == null)
+            {
+                return OperationStatus.Failed("Please provide end date");
+            }
+
+            return OperationStatus.Failed("Start date must be lesser or equal");
+        }
+    }
 }
