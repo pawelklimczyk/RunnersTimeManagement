@@ -49,8 +49,54 @@ namespace RunnersTimeManagement.Core.Domain
 
     public class TimeEntryFilter
     {
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+
+        private DateTime? _startDate;
+        private DateTime? _endDate;
+
+        public DateTime? StartDate
+        {
+            get
+            {
+                return _startDate;
+            }
+            set
+            {
+                if (_startDate != value)
+                {
+                    _startDate = value;
+                    if (_startDate.HasValue)
+                    {
+                        _startDate = _startDate.Value.Date;
+                    }
+                }
+            }
+        }
+        public DateTime? EndDate
+        {
+            get
+            {
+                return _endDate;
+            }
+            set
+            {
+                if (_endDate != value)
+                {
+                    _endDate = value;
+                    if (_endDate.HasValue)
+                    {
+                        _endDate = _endDate.Value.Date.AddDays(1).AddMilliseconds(-1);
+                    }
+                }
+            }
+        }
+
+        public bool HasFilter
+        {
+            get
+            {
+                return (StartDate != null && EndDate != null && (bool)this.Validate());
+            }
+        }
 
         public OperationStatus Validate()
         {

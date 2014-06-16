@@ -10,11 +10,18 @@ namespace RunnersTimeManagement.WP8
     using System.Windows.Navigation;
 
     using RunnersTimeManagement.Core.Domain;
+    using RunnersTimeManagement.WP8.Commands;
 
     public partial class MainPage : BasePage
     {
+        public TimeEntryFilter Filter { get; set; }
+        public SearchCommand SearchCommand { get; set; }
+
         public MainPage()
         {
+            Filter= new TimeEntryFilter();
+            SearchCommand = new SearchCommand(this);
+            
             this.InitializeComponent();
             this.DataContext = this;
         }
@@ -22,6 +29,7 @@ namespace RunnersTimeManagement.WP8
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
             if (e.NavigationMode == NavigationMode.New)
             {
                 FetchTimeEntries();
@@ -30,11 +38,12 @@ namespace RunnersTimeManagement.WP8
 
         private async void FetchTimeEntries()
         {
-            IsBusy = true;
-            var operationStatus = await App.TimeService.GetTimeEntryList();
-            List<TimeEntry> list = (List<TimeEntry>)operationStatus.Data;
-            uxTimeEntries.ItemsSource = list;
-            IsBusy = false;
+            SearchCommand.Execute(Filter);
+            //IsBusy = true;
+            //var operationStatus = await App.TimeService.GetTimeEntryList(Filter);
+            //List<TimeEntry> list = (List<TimeEntry>)operationStatus.Data;
+            //uxTimeEntries.ItemsSource = list;
+            //IsBusy = false;
         }
     }
 }

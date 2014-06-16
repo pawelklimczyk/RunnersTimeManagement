@@ -48,7 +48,7 @@ namespace RunnersTimeManagement.ClientServices
 
         }
 
-        public Task<OperationStatus> GetTimeEntryList()
+        public Task<OperationStatus> GetTimeEntryList(TimeEntryFilter filter)
         {
             var tcs = new TaskCompletionSource<OperationStatus>();
 
@@ -56,6 +56,7 @@ namespace RunnersTimeManagement.ClientServices
             var request = new RestRequest("api/time/list", Method.POST);
             request.RequestFormat = DataFormat.Json;
             request.AddHeader("auth-token", AppConfiguration.Token);
+            request.AddBody(filter);
 
             client.ExecuteAsync(request, response =>
             {

@@ -62,5 +62,12 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
 
             return status;
         }
+
+        public static IDatabaseProvider ReturnInitializedDatabase()
+        {
+            var databaseProvider = new TestsDatabaseProvider();
+            databaseProvider.InitDatabase();
+            return databaseProvider;
+        }
     }
 }

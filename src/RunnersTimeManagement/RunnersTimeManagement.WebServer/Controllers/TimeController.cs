@@ -48,12 +48,12 @@ namespace RunnersTimeManagement.WebServer.Controllers
 
         [HttpPost]
         [ActionName("list")]
-        public OperationStatus PostGetTimeEntries()
+        public OperationStatus PostGetTimeEntries(TimeEntryFilter filter)
         {
             string token = ServerHelpers.GetAccessTokenFromRequest(this.Request);
             if ((bool)_usersService.Authorize(token))
             {
-                return _timeService.GetTimeEntryList(token);
+                return _timeService.GetTimeEntryList(token, filter);
             }
             else
             {

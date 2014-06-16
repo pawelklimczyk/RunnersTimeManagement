@@ -8,7 +8,7 @@ namespace RunnersTimeManagement.ClientServices
 {
     public class AppConfiguration
     {
-        public static string BaseUrl = "http://192.168.190.102";
+        public static string BaseUrl = "http://192.168.190.104";
 
         public static string Token;
     }

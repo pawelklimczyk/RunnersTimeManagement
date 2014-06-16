@@ -38,13 +38,13 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
                     <TextBlock TextAlignment="Center">From:</TextBlock>
-                    <toolkit:DatePicker Name="uxDateFrom" Grid.Row="1" Value="{Binding Path=TimeEntry.EntryDate, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
+                    <toolkit:DatePicker Name="uxDateFrom" Grid.Row="1" Value="{Binding Path=Filter.StartDate, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <TextBlock TextAlignment="Center">To:</TextBlock>
-                    <toolkit:DatePicker Name="uxDateTo" Grid.Row="1" Value="{Binding Path=TimeEntry.EntryDate, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
+                    <toolkit:DatePicker Name="uxDateTo" Grid.Row="1" Value="{Binding Path=Filter.EndDate, Mode=TwoWay}" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"  />
                 </StackPanel>
-                <Button Name="searchbutton" Grid.Column="2" Content="Search" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" Height="70" />
+                <Button Name="searchbutton" Grid.Column="2" Content="Search" IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}" Height="70" Command="{Binding SearchCommand}" CommandParameter="{Binding Filter}" />
             </Grid>
         </StackPanel>
 

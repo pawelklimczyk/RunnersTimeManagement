@@ -19,8 +19,7 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
         [SetUp]
         public void TestSetup()
         {
-            var provider = new TestsDatabaseProvider();
-            provider.InitDatabase();
+            var provider = TestsDatabaseProvider.ReturnInitializedDatabase();
             this._usersServiceSut = new UsersService(provider);
         }
 
@@ -95,8 +94,7 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
         [SetUp]
         public void TestSetup()
         {
-            var provider = new TestsDatabaseProvider();
-            provider.InitDatabase();
+            var provider = TestsDatabaseProvider.ReturnInitializedDatabase();
             this._usersServiceSut = new UsersService(provider);
         }
 
@@ -171,8 +169,7 @@ namespace RunnersTimeManagement.ServerServices.UnitTests
         public void TestSetup()
         {
             tokenProviderStub = new fakeAccessTokenProvider();
-            var provider = new TestsDatabaseProvider();
-            provider.InitDatabase();
+            var provider = TestsDatabaseProvider.ReturnInitializedDatabase();
             this._usersServiceSut = new UsersService(provider, tokenProviderStub);
         }
 
